@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "861355681523",
+    "project_id": "yogaveda-85229",
+    "storage_bucket": "yogaveda-85229.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861355681523:android:f26de020cd7179f6f57986",
+        "android_client_info": {
+          "package_name": "com.yogaveda.uphaar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDid3W5Zkc8QDGJGeZgaMkOfVh5truezvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

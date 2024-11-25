@@ -31,3 +31,5 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":server")
 include(":shared")
+include(":feature:login")
+include(":feature:board")
