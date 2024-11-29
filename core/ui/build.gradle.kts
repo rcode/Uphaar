@@ -43,16 +43,25 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
-            //implementation(projects.core.ui)
+            api(compose.preview)
+            api(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
-            implementation(projects.core.ui)
+            api(compose.runtime)
+            api(compose.foundation)
+            api(compose.material3)
+            api(compose.ui)
+            api(compose.components.resources)
+            api(compose.components.uiToolingPreview)
+            api(libs.androidx.lifecycle.viewmodel)
+            api(libs.androidx.lifecycle.runtime.compose)
+            // api(projects.shared)
         }
     }
 }
 
 android {
-    namespace = "com.yogaveda.uphaar.feature.board"
+    namespace = "com.yogaveda.uphaar.core.ui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -62,6 +71,7 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
+
 dependencies {
     debugImplementation(libs.androidx.ui.tooling)
 }

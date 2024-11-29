@@ -10,9 +10,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
@@ -33,6 +33,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.yogaveda.uphaar.feature.login.state.LoginUserState
 
 @Composable
 fun LoginUserDetails() {
@@ -45,11 +46,12 @@ fun LoginUserDetails() {
 
 @Composable
 fun UserInputForm() {
-    var fullName by remember { mutableStateOf("Rahul Thakur") }
+    /*var fullName by remember { mutableStateOf("Rahul Thakur") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var phoneNumber by remember { mutableStateOf("") }
+    var phoneNumber by remember { mutableStateOf("") } */
     var passwordVisible by remember { mutableStateOf(false) }
+    var uiState by remember { mutableStateOf(LoginUserState()) }
 
     Column(
         modifier = Modifier
@@ -59,11 +61,11 @@ fun UserInputForm() {
     ) {
         // Full Name Text Field
         OutlinedTextField(
-            value = fullName,
-            onValueChange = { fullName = it },
+            value = uiState.fullName,
+            onValueChange = { uiState.fullName = it },
             label = { Text("Full name") },
             trailingIcon = {
-                IconButton(onClick = { fullName = "" }) {
+                IconButton(onClick = { uiState.fullName = "" }) {
                     Icon(imageVector = Icons.Default.Close, contentDescription = "Clear")
                 }
             },
@@ -73,8 +75,8 @@ fun UserInputForm() {
 
         // Email Address Text Field
         OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
+            value = uiState.email,
+            onValueChange = { uiState.email = it },
             label = { Text("Email address") },
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier.fillMaxWidth()
@@ -82,8 +84,8 @@ fun UserInputForm() {
 
         // Password Text Field
         OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
+            value = uiState.password,
+            onValueChange = { uiState.password = it },
             label = { Text("Password") },
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
@@ -113,8 +115,8 @@ fun UserInputForm() {
                 Text("+91", fontSize = 16.sp)
             }
             OutlinedTextField(
-                value = phoneNumber,
-                onValueChange = { phoneNumber = it },
+                value = uiState.phone,
+                onValueChange = { uiState.phone = it },
                 label = { Text("Phone # (optional)") },
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier.fillMaxWidth()

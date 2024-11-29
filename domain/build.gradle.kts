@@ -4,10 +4,15 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
+    //id("java-library")
+    //alias(libs.plugins.kotlinJvm)
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.composeCompiler)
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 kotlin {
@@ -42,17 +47,14 @@ kotlin {
     }
 
     sourceSets {
-        androidMain.dependencies {
-            //implementation(projects.core.ui)
-        }
         commonMain.dependencies {
-            implementation(projects.core.ui)
+            implementation(projects.core.base)
         }
     }
 }
 
 android {
-    namespace = "com.yogaveda.uphaar.feature.board"
+    namespace = "com.yogaveda.uphaar.domain"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -61,7 +63,4 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
-}
-dependencies {
-    debugImplementation(libs.androidx.ui.tooling)
 }
