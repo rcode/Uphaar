@@ -17,18 +17,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*
+
         setContent {
             App()
         }
-        */
 
+/*
         setContent {
             Surface (
                 modifier = Modifier
                     .background(Color.LightGray)
             ) {
-                KoinContext {
+
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
@@ -38,9 +38,9 @@ class MainActivity : ComponentActivity() {
                             LoginMain()
                         }
                     }
-                }
+
             }
-        }
+        }*/
     }
 }
 

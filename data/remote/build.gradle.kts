@@ -19,6 +19,10 @@ kotlin {
         }
     }
 
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of("11"))
+    }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -70,6 +74,10 @@ android {
     namespace = "com.yogaveda.uphaar.data.remote"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
 

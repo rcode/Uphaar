@@ -46,7 +46,7 @@ kotlin {
         androidMain.dependencies {
             api(compose.preview)
             api(libs.androidx.activity.compose)
-            api(libs.koin.android)
+            
             api(libs.koin.androidx.compose)
             api(libs.androidx.ui.tooling)
         }
@@ -64,7 +64,6 @@ kotlin {
             // api(projects.shared)
             api(projects.core.base)
 
-            api(libs.koin.core)
             api(libs.koin.compose)
             api(libs.koin.compose.viewmodel)
         }

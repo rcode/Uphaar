@@ -19,7 +19,8 @@ kotlin = "2.0.21"
 kotlinx-coroutines = "1.9.0"
 ktor = "3.0.0"
 logback = "1.5.11"
-navigationCompose = "2.8.4"
+logging = "1.5.0"
+navigationCompose = "2.8.5"
 navigationRuntimeKtx = "2.8.4"
 uiTooling = "1.7.5"
 koin = "4.0.0"
@@ -27,9 +28,7 @@ koin = "4.0.0"
 [libraries]
 buildkonfig-gradle-plugin = { module = "com.codingfeline.buildkonfig:buildkonfig-gradle-plugin", version.ref = "buildkonfigGradlePlugin" }
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
-koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
-koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
-koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
+
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -65,7 +64,11 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 # Koin
 koin-core = {group = "io.insert-koin", name = "koin-core", version.ref="koin"}
 koin-android = {group = "io.insert-koin", name = "koin-android", version.ref="koin"}
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
 koin-core-coroutine = {module = "io.insert-koin:koin-core-coroutines", version.ref="koin"}
+logging = { module = "org.lighthousegames:logging", version.ref = "logging" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

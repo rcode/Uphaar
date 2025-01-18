@@ -71,6 +71,8 @@ kotlin {
             implementation(projects.core.ui)
             implementation(projects.shared)
             implementation(projects.feature.login)
+            implementation(projects.data.main)
+            implementation(projects.domain)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

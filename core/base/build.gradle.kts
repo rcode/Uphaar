@@ -41,14 +41,22 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
+            api(libs.koin.android)
             api(libs.androidx.core.ktx)
+            //api(libs.logging)
         }
         commonMain.dependencies {
+            api(libs.koin.core)
             api(libs.kotlinx.coroutines.core)
+            //api(libs.logging)
         }
         iosMain.dependencies {
             // For iOS, add the KMP-NativeCoroutines library
             //api(libs.kmp.native.coroutines)
+            //api(libs.logging)
+        }
+        jvmMain.dependencies {
+            //api(libs.logging)
         }
     }
 }
