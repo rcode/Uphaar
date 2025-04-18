@@ -61,6 +61,8 @@ kotlin {
 
             api(libs.androidx.lifecycle.viewmodel)
             api(libs.androidx.lifecycle.runtime.compose)
+
+            api(libs.navigation.compose)
             // api(projects.shared)
             api(projects.core.base)
 

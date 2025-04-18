@@ -23,7 +23,11 @@ import uphaar.feature.login.generated.resources.Res
 import uphaar.feature.login.generated.resources.uphaar_simple_icon
 
 @Composable
-fun LoginMain() {
+fun LoginMain(
+    loginUsingGoogle: () -> Unit = {},
+    loginUsingPhoneNumber: () -> Unit = {},
+    loginViewModel: LoginViewModel = viewModel()
+) {
 
     Column(
         modifier = Modifier
@@ -56,12 +60,12 @@ fun LoginMain() {
         ) {
 
             Button(
-                onClick = {}
+                onClick = loginUsingPhoneNumber
             ) {
                 Text("Login using phone number")
             }
             Button(
-                onClick = {}
+                onClick = loginUsingGoogle
             ) {
                 Text("Login using google")
             }

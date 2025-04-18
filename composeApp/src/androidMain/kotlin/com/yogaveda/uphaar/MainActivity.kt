@@ -21,26 +21,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             App()
         }
-
-/*
-        setContent {
-            Surface (
-                modifier = Modifier
-                    .background(Color.LightGray)
-            ) {
-
-                    val navController = rememberNavController()
-                    NavHost(
-                        navController = navController,
-                        startDestination = "login"
-                    ){
-                        composable(route = "login") {
-                            LoginMain()
-                        }
-                    }
-
-            }
-        }*/
     }
 }
 

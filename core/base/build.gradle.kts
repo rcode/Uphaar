@@ -48,6 +48,7 @@ kotlin {
         commonMain.dependencies {
             api(libs.koin.core)
             api(libs.kotlinx.coroutines.core)
+            api(libs.kotlinx.serialization.json)
             //api(libs.logging)
         }
         iosMain.dependencies {

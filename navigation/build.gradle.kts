@@ -44,18 +44,19 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
-            implementation(projects.core.ui)
+            //implementation(projects.core.ui)
         }
         commonMain.dependencies {
-            api(projects.core.ui)
             implementation(compose.components.resources)
-            implementation(projects.domain)
+            implementation(projects.core.ui)
+            implementation(projects.feature.login)
+            implementation(projects.feature.board)
         }
     }
 }
 
 android {
-    namespace = "com.yogaveda.uphaar.feature.login"
+    namespace = "com.yogaveda.uphaar.navigation"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -65,6 +66,13 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
-/*dependencies {
-    debugImplementation(libs.androidx.ui.tooling)
-}*/
+
+dependencies {
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+}

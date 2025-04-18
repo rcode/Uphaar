@@ -71,8 +71,11 @@ kotlin {
             implementation(projects.core.ui)
             implementation(projects.shared)
             implementation(projects.feature.login)
+            implementation(projects.feature.board)
             implementation(projects.data.main)
             implementation(projects.domain)
+
+            //implementation(libs.androidx.navigation.runtime.ktx)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -109,7 +112,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.navigation.compose)
+
     debugImplementation(compose.uiTooling)
 }
 
