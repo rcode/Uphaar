@@ -1,39 +1,38 @@
 package com.yogaveda.uphaar.feature.board.destinations
 
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import com.yogaveda.uphaar.core.ui.navigation.FeatureNavigationApi
+import androidx.navigation.compose.composable
+import androidx.navigation.navigation
+import com.yogaveda.uphaar.core.ui.navigation.NavigationTarget
+import com.yogaveda.uphaar.feature.board.screens.CreateBoard
 import kotlinx.serialization.Serializable
 
 @Serializable
-object BoardDestination
+object BoardFeatureDestination: NavigationTarget
 
 @Serializable
-object BoardListDestination
+object BoardDestination: NavigationTarget
 
 @Serializable
-data class BoardDetailsDestination(val boardId: String)
+object BoardListDestination: NavigationTarget
 
 @Serializable
-object CreateBoardDestinations
+data class BoardDetailsDestination(val boardId: String): NavigationTarget
 
 @Serializable
-object BoardActionsDestination
+object CreateBoardDestinations: NavigationTarget
 
 @Serializable
-data class BoardMembersDestination(val boardId: String)
+object BoardActionsDestination: NavigationTarget
 
-class BoardFeatureImplementation: FeatureNavigationApi {
+@Serializable
+data class BoardMembersDestination(val boardId: String): NavigationTarget
 
-    override fun featureRoute() = BoardListDestination
+fun NavGraphBuilder.addBoardGraph(popBackStack: () -> Unit, navigationOnPhoneClick: () -> Unit) {   //
 
-    override fun registerGraph(
-        navGraphBuilder: NavGraphBuilder,
-        navController: NavController,
-        modifier: Modifier
-    ) {
-        TODO("Not yet implemented")
+    navigation<BoardFeatureDestination>(startDestination = BoardListDestination) {
+        composable<BoardListDestination>() {
+            CreateBoard()
+        }
     }
-
 }

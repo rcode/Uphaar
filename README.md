@@ -15,6 +15,9 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop, Ser
 * `/shared` is for the code that will be shared between all targets in the project.
   The most important subfolder is `commonMain`. If preferred, you can add code to the platform-specific folders here too.
 
+Run WASM build:
+./gradlew kotlinUpgradeYarnLock
+./gradlew wasmBrowserDevelopmentRun --continuous
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
 [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),

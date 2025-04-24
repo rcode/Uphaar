@@ -12,19 +12,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.yogaveda.uphaar.core.ui.navigation.FeatureNavigationApi
-import com.yogaveda.uphaar.feature.board.destinations.BoardDestination
-import com.yogaveda.uphaar.feature.board.destinations.BoardFeatureImplementation
-import com.yogaveda.uphaar.feature.login.destinations.LoginFeatureImpl
-import com.yogaveda.uphaar.feature.login.viewmodel.LoginViewModel
+import com.yogaveda.uphaar.navigation.NavigationComponent
+import com.yogaveda.uphaar.navigation.NavigationFlow
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinContext
-import org.koin.compose.viewmodel.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 @Preview
@@ -33,22 +26,18 @@ fun App() {
         MaterialTheme {
 
             var showContent by remember { mutableStateOf(false) }
-            val viewModel = koinViewModel<LoginViewModel>()
+            //val viewModel = koinViewModel<LoginViewModel>()
 
             Surface(
                 modifier = Modifier
                     .background(Color.LightGray)
             ) {
                 val navController = rememberNavController()
-                NavHost(
-                    navController = navController,
-                    startDestination = LoginFeatureImpl().featureRoute()
-                ) {
-                    register(LoginFeatureImpl(), navController)
-                    navigation<BoardDestination>(startDestination = BoardFeatureImplementation().featureRoute()) {
 
-                    }
-                }
+                NavigationComponent(
+                    navController = navController,
+                    navigationFlow = koinInject<NavigationFlow>()
+                )
             }
 
             Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -68,16 +57,4 @@ fun App() {
             }
         }
     }
-}
-
-fun NavGraphBuilder.register(
-    featureNavigationApi: FeatureNavigationApi,
-    navController: NavHostController,
-    modifier: Modifier = Modifier
-) {
-    featureNavigationApi.registerGraph(
-        navGraphBuilder = this,
-        navController = navController,
-        modifier = modifier
-    )
 }

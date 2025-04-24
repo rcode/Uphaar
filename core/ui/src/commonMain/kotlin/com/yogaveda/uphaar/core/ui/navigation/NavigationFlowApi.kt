@@ -1,9 +1,6 @@
 package com.yogaveda.uphaar.core.ui.navigation
 
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-
+/*
 interface FeatureNavigationApi {
     fun featureRoute(): Any
     fun registerGraph(
@@ -11,4 +8,9 @@ interface FeatureNavigationApi {
         navController: NavController,
         modifier: Modifier = Modifier
     )
+}*/
+
+
+interface NavigationFlowApi {
+    fun navigateTo(navTarget: NavigationTarget)
 }

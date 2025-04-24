@@ -49,6 +49,7 @@ kotlin {
             
             api(libs.koin.androidx.compose)
             api(libs.androidx.ui.tooling)
+            api(compose.uiTooling)
         }
 
         commonMain.dependencies {

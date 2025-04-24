@@ -49,7 +49,7 @@ kotlin {
             api(libs.koin.core)
             api(libs.kotlinx.coroutines.core)
             api(libs.kotlinx.serialization.json)
-            //api(libs.logging)
+            api(libs.kermit)
         }
         iosMain.dependencies {
             // For iOS, add the KMP-NativeCoroutines library

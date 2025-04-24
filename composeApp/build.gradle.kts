@@ -60,18 +60,11 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
-            /*implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.androidx.lifecycle.runtime.compose)*/
             implementation(projects.core.ui)
             implementation(projects.shared)
-            implementation(projects.feature.login)
-            implementation(projects.feature.board)
+            //implementation(projects.feature.login)
+            //implementation(projects.feature.board)
+            implementation(projects.navigation)
             implementation(projects.data.main)
             implementation(projects.domain)
 
@@ -100,20 +93,10 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-}
-
-dependencies {
-
-    debugImplementation(compose.uiTooling)
 }
 
 compose.desktop {
