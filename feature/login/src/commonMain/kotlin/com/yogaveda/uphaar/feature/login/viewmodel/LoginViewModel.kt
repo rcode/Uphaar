@@ -1,15 +1,19 @@
 package com.yogaveda.uphaar.feature.login.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import com.yogaveda.uphaar.core.ui.navigation.ModuleNavigationTarget
+import com.yogaveda.uphaar.core.ui.navigation.NavigationFlowApi
 import com.yogaveda.uphaar.core.ui.viewmodel.BaseViewModel
 import com.yogaveda.uphaar.domain.interactor.UpdateUserDetails
+import com.yogaveda.uphaar.domain.interactor.UpdateUserDetails.*
 import com.yogaveda.uphaar.domain.model.UserModel
 import com.yogaveda.uphaar.feature.login.state.LoginUserState
 import kotlinx.coroutines.launch
 import org.koin.core.logger.Logger
 
 class LoginViewModel(
-    private val updateUserDetails: UpdateUserDetails
+    private val updateUserDetails: UpdateUserDetails,
+    private val navigatorFlowApi: NavigationFlowApi
 ) : BaseViewModel<LoginViewContract.Event, LoginViewContract.State, LoginViewContract.Effect>() {
 
     init {
@@ -26,7 +30,7 @@ class LoginViewModel(
                 // Make API call to create user
 
                 viewModelScope.launch {
-                    updateUserDetails.run(UpdateUserDetails.Params(UserModel()))
+                    updateUserDetails.run(Params(UserModel()))
                         .collect {
                             setState { copy() }
                         }
@@ -34,7 +38,9 @@ class LoginViewModel(
                 }
 
             }
-            else -> { setEffect { LoginViewContract.Effect.InvalidData("Do not know how to handle this event") } }
+            //else -> { setEffect { LoginViewContract.Effect.InvalidData("Do not know how to handle this event") }
+            is LoginViewContract.Event.NavigateToBoardModule -> navigatorFlowApi.navigateTo(ModuleNavigationTarget.BoardFeatureDestination)
         }
     }
+
 }

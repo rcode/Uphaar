@@ -5,8 +5,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import co.touchlab.kermit.Logger
+import com.yogaveda.uphaar.core.ui.navigation.ModuleNavigationTarget
+import com.yogaveda.uphaar.core.ui.navigation.ModuleNavigationTarget.BoardFeatureDestination
 import com.yogaveda.uphaar.core.ui.navigation.NavigationFlowApi
-import com.yogaveda.uphaar.feature.board.destinations.BoardFeatureDestination
 import com.yogaveda.uphaar.feature.board.destinations.addBoardGraph
 import com.yogaveda.uphaar.feature.login.destinations.LoginFeatureDestination
 import com.yogaveda.uphaar.feature.login.destinations.addLoginGraph
@@ -26,6 +27,17 @@ fun NavigationComponent(
      */
     LaunchedEffect("com/yogaveda/uphaar/navigation") {
         navigationFlow.sharedFlow.onEach {
+            if(it is ModuleNavigationTarget) {
+                when(it) {
+                    is ModuleNavigationTarget.BoardFeatureDestination -> {
+                        navController.navigate(it) {
+                            Logger.i { "Navigation to $it"}
+                            popUpTo(it)
+                        }
+                    }
+                }
+
+            }
             navController.navigate(it) {
                 Logger.i { "Navigation to $it"}
                 popUpTo(it) // wichtig, damit der backstack aus unique nav entries besteht (auf Parameter achten)

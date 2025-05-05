@@ -11,6 +11,7 @@ class LoginViewContract {
     sealed class Event: ViewEvent {
         object Reset: Event()
         data class CreateUser(val user: LoginUserState) : Event()
+        object NavigateToBoardModule : Event()
     }
 
     data class State(

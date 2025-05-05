@@ -49,8 +49,16 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.components.resources)
             implementation(projects.core.ui)
-            implementation(projects.feature.login)
-            implementation(projects.feature.board)
+            api(projects.feature.login)
+            api(projects.feature.board)
+        }
+        iosMain.dependencies {
+            // For iOS, add the KMP-NativeCoroutines library
+            //api(libs.kmp.native.coroutines)
+            //api(libs.logging)
+        }
+        jvmMain.dependencies {
+            //api(libs.logging)
         }
     }
 }

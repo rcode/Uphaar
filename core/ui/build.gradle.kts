@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -69,6 +70,14 @@ kotlin {
 
             api(libs.koin.compose)
             api(libs.koin.compose.viewmodel)
+        }
+        iosMain.dependencies {
+            // For iOS, add the KMP-NativeCoroutines library
+            //api(libs.kmp.native.coroutines)
+            //api(libs.logging)
+        }
+        jvmMain.dependencies {
+            //api(libs.logging)
         }
     }
 }

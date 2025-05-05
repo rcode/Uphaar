@@ -19,6 +19,13 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinContext
 import org.koin.compose.koinInject
 
+/**
+ * This is the main app composable.
+ * It includes the navigation component
+ * The app level things are initialized here, like KOIN DI
+ * and these might be different for different platforms
+ * like Android, iOS, WASM/Js, JVM etc.
+ */
 @Composable
 @Preview
 fun App() {

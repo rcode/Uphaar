@@ -50,6 +50,14 @@ kotlin {
             implementation(compose.components.resources)
             implementation(projects.core.ui)
         }
+        iosMain.dependencies {
+            // For iOS, add the KMP-NativeCoroutines library
+            //api(libs.kmp.native.coroutines)
+            //api(libs.logging)
+        }
+        jvmMain.dependencies {
+            //api(libs.logging)
+        }
     }
 }
 

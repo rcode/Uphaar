@@ -15,14 +15,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.yogaveda.uphaar.feature.login.viewmodel.LoginViewContract
+import com.yogaveda.uphaar.feature.login.viewmodel.LoginViewModel
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import uphaar.feature.login.generated.resources.Res
 import uphaar.feature.login.generated.resources.uphaar_simple_icon
 
 @Composable
 fun LoginMain(
-    navigateOnPhoneClick: () -> Unit
+    viewModel: LoginViewModel
 ) {
 
     Column(
@@ -56,7 +57,7 @@ fun LoginMain(
         ) {
 
             Button(
-                onClick = navigateOnPhoneClick
+                onClick = { viewModel.handleEvents(LoginViewContract.Event.NavigateToBoardModule) }//navigateOnPhoneClick
             ) {
                 Text("Login using phone number")
             }
@@ -66,12 +67,14 @@ fun LoginMain(
                 Text("Login using google")
             }
         }
-
     }
 }
 
+/*@Preview
 @Composable
-@Preview
 fun LoginPreview() {
-    LoginMain({})
-}
+    LoginMain(
+        navigateOnPhoneClick = {},
+        viewModel = koinViewModel<LoginViewModel>()
+    )
+}*/

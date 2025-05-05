@@ -66,6 +66,12 @@ kotlin {
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            // For iOS, add the KMP-NativeCoroutines library
+            //api(libs.kmp.native.coroutines)
+            //api(libs.logging)
+        }
+        jvmMain.dependencies {
+            //api(libs.logging)
         }
     }
 }

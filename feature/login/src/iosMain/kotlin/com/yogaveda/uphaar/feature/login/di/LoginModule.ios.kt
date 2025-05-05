@@ -5,6 +5,6 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
-actual val loginModule = module {
+val loginModule = module {
     singleOf(::LoginViewModel)
 }

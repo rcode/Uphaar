@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -7,7 +6,6 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
-    alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
 }
 
@@ -56,24 +54,27 @@ kotlin {
         val desktopMain by getting
         
         androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
         }
+
         commonMain.dependencies {
             implementation(projects.core.ui)
             implementation(projects.shared)
-            //implementation(projects.feature.login)
-            //implementation(projects.feature.board)
             implementation(projects.navigation)
             implementation(projects.data.main)
             implementation(projects.domain)
-
-            //implementation(libs.androidx.navigation.runtime.ktx)
         }
-        desktopMain.dependencies {
+        iosMain.dependencies {
+            // For iOS, add the KMP-NativeCoroutines library
+            //api(libs.kmp.native.coroutines)
+            //api(libs.logging)
+        }
+        jvmMain.dependencies {
+            //api(libs.logging)
+        }
+        /*desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
-        }
+        }*/
     }
 }
 
@@ -99,6 +100,7 @@ android {
     }
 }
 
+/*
 compose.desktop {
     application {
         mainClass = "com.yogaveda.uphaar.MainKt"
@@ -110,3 +112,5 @@ compose.desktop {
         }
     }
 }
+*/
+

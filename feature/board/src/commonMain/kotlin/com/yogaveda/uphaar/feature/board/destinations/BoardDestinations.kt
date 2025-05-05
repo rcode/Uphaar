@@ -3,12 +3,10 @@ package com.yogaveda.uphaar.feature.board.destinations
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.yogaveda.uphaar.core.ui.navigation.ModuleNavigationTarget
 import com.yogaveda.uphaar.core.ui.navigation.NavigationTarget
 import com.yogaveda.uphaar.feature.board.screens.CreateBoard
 import kotlinx.serialization.Serializable
-
-@Serializable
-object BoardFeatureDestination: NavigationTarget
 
 @Serializable
 object BoardDestination: NavigationTarget
@@ -30,7 +28,7 @@ data class BoardMembersDestination(val boardId: String): NavigationTarget
 
 fun NavGraphBuilder.addBoardGraph(popBackStack: () -> Unit, navigationOnPhoneClick: () -> Unit) {   //
 
-    navigation<BoardFeatureDestination>(startDestination = BoardListDestination) {
+    navigation<ModuleNavigationTarget.BoardFeatureDestination>(startDestination = BoardListDestination) {
         composable<BoardListDestination>() {
             CreateBoard()
         }

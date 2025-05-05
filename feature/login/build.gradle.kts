@@ -51,6 +51,14 @@ kotlin {
             implementation(compose.components.resources)
             implementation(projects.domain)
         }
+        iosMain.dependencies {
+            // For iOS, add the KMP-NativeCoroutines library
+            //api(libs.kmp.native.coroutines)
+            //api(libs.logging)
+        }
+        jvmMain.dependencies {
+            //api(libs.logging)
+        }
     }
 }
 
@@ -65,6 +73,3 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
-/*dependencies {
-    debugImplementation(libs.androidx.ui.tooling)
-}*/
